@@ -5,4 +5,9 @@ describe("String Calculator", () => {
     const result = add("");
     expect(result).toBe(0);
   });
+
+  it("should return the number for single number string", () => {
+    const result = add("1");
+    expect(result).toBe(1);
+  });
 });
