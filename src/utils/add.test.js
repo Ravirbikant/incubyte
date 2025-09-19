@@ -15,4 +15,9 @@ describe("String Calculator", () => {
     const result = add("1,5");
     expect(result).toBe(6);
   });
+
+  it("should handle any amount of numbers", () => {
+    const result = add("1,2,3");
+    expect(result).toBe(6);
+  });
 });
