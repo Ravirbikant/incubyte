@@ -47,4 +47,16 @@ describe("String Calculator", () => {
   it("should throw exception for negative number with newlines", () => {
     expect(() => add("1\n-3,2")).toThrow("negative numbers not allowed -3");
   });
+
+  it("should throw exception for multiple negative numbers", () => {
+    expect(() => add("1,-2,-4,5")).toThrow(
+      "negative numbers not allowed -2,-4"
+    );
+  });
+
+  it("should throw exception for multiple negative numbers with mixed delimiters", () => {
+    expect(() => add("//;\n-1;2,-3\n-5")).toThrow(
+      "negative numbers not allowed -1,-3,-5"
+    );
+  });
 });
