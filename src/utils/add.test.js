@@ -35,4 +35,16 @@ describe("String Calculator", () => {
     const result = add("//|\n1|2|3");
     expect(result).toBe(6);
   });
+
+  it("should throw exception for negative number", () => {
+    expect(() => add("1,-2,3")).toThrow("negative numbers not allowed -2");
+  });
+
+  it("should throw exception for negative number with custom delimiter", () => {
+    expect(() => add("//;\n1;-5;3")).toThrow("negative numbers not allowed -5");
+  });
+
+  it("should throw exception for negative number with newlines", () => {
+    expect(() => add("1\n-3,2")).toThrow("negative numbers not allowed -3");
+  });
 });

@@ -13,5 +13,13 @@ export function add(numbers) {
 
   numbersToProcess = numbersToProcess.replaceAll("\n", ",");
   const numberArray = numbersToProcess.split(",");
+
+  for (const num of numberArray) {
+    const number = Number(num);
+    if (number < 0) {
+      throw new Error(`negative numbers not allowed ${number}`);
+    }
+  }
+
   return numberArray.reduce((sum, num) => sum + Number(num), 0);
 }
