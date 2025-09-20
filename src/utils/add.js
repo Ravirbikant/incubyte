@@ -28,5 +28,8 @@ export function add(numbers) {
     );
   }
 
-  return numberArray.reduce((sum, num) => sum + Number(num), 0);
+  return numberArray.reduce((sum, num) => {
+    const number = Number(num);
+    return number > 1000 ? sum : sum + number;
+  }, 0);
 }

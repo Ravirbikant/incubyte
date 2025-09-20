@@ -59,4 +59,19 @@ describe("String Calculator", () => {
       "negative numbers not allowed -1,-3,-5"
     );
   });
+
+  it("should ignore numbers bigger than 1000", () => {
+    const result = add("2,1001");
+    expect(result).toBe(2);
+  });
+
+  it("should include numbers equal to 1000", () => {
+    const result = add("2,1000");
+    expect(result).toBe(1002);
+  });
+
+  it("should ignore multiple numbers bigger than 1000", () => {
+    const result = add("1,2,1001,3,1500,4");
+    expect(result).toBe(10);
+  });
 });
