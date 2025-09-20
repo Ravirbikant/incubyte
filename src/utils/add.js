@@ -3,10 +3,15 @@ export function add(numbers) {
     return 0;
   }
 
-  const numberArray = numbers.split(/[,\n]/);
-  let sum = 0;
-  for (const num of numberArray) {
-    sum += parseInt(num);
+  let numbersToProcess = numbers;
+
+  if (numbers.startsWith("//")) {
+    const delimiter = numbers[2];
+    numbersToProcess = numbers.substring(4);
+    numbersToProcess = numbersToProcess.replaceAll(delimiter, ",");
   }
-  return sum;
+
+  numbersToProcess = numbersToProcess.replaceAll("\n", ",");
+  const numberArray = numbersToProcess.split(",");
+  return numberArray.reduce((sum, num) => sum + Number(num), 0);
 }

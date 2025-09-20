@@ -25,4 +25,14 @@ describe("String Calculator", () => {
     const result = add("1\n2,3");
     expect(result).toBe(6);
   });
+
+  it("should support custom delimiter", () => {
+    const result = add("//;\n1;2");
+    expect(result).toBe(3);
+  });
+
+  it("should support different custom delimiters", () => {
+    const result = add("//|\n1|2|3");
+    expect(result).toBe(6);
+  });
 });
