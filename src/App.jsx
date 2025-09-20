@@ -1,5 +1,12 @@
+import StringCalculator from "./components/StringCalculator";
+import "./App.css";
+
 function App() {
-  return <>Assignment</>;
+  return (
+    <div className="App">
+      <StringCalculator />
+    </div>
+  );
 }
 
 export default App;
