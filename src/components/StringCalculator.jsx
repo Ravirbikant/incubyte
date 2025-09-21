@@ -19,30 +19,47 @@ function StringCalculator() {
     setResult(null);
   };
 
+  const handleClear = () => {
+    setInput("");
+    setResult(null);
+  };
+
+  const isError =
+    result && typeof result === "string" && result.startsWith("Error");
+
   return (
-    <div>
+    <div className="string-calculator">
       <h1>String Calculator</h1>
-      <p>
+      <p className="description">
         Enter comma-separated numbers or use newlines to calculate their sum.
       </p>
 
-      <div>
+      <div className="input-section">
         <label htmlFor="numbers-input">Numbers:</label>
         <textarea
           id="numbers-input"
           value={input}
           onChange={handleInputChange}
-          placeholder="e.g., 1,2,3"
+          placeholder="e.g., 1,2,3 or //;\n1;2;3"
           rows={3}
           cols={30}
         />
-        <button onClick={handleCalculate}>Calculate</button>
+        <div className="button-group">
+          <button onClick={handleCalculate} className="calculate-btn">
+            Calculate
+          </button>
+          <button onClick={handleClear} className="clear-btn">
+            Clear
+          </button>
+        </div>
       </div>
 
       {result !== null && (
-        <div>
+        <div className="result-section">
           <h3>Result:</h3>
-          <div>{result}</div>
+          <div className={`result-value ${isError ? "error" : ""}`}>
+            {result}
+          </div>
         </div>
       )}
     </div>
